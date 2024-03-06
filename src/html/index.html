@@ -1,0 +1,105 @@
+<? const data = getSheetData("https://docs.google.com/spreadsheets/d/1x9WHtS9I0A2VLXpnoTu8WlTDlbKMkzXR7HsIW7PzQmU/edit").chapter_1 ?>
+<article
+    class="webtext native_expression native_phrase_basic tb--v4 lang-<?= php_open ?> echo $locale<?= php_close ?> card-body"
+    id="webtext_%class_id%_%chapter_id%"
+    data-class_id="%class_id%"
+    data-chapter_id="%chapter_id%"
+    data-orderno="%orderno%"
+    style="padding-right: 0px; padding-left: 0px"
+>
+    <!-- cover -->
+    <div
+        class="webtext_page webtext_page_break no-padding native-background"
+        id="webtext_page_%class_id%_%chapter_id%_<?= php_open ?> echo ++$page_num<?= php_close ?>"
+    >
+        <div class="webtext_page webtext_page_break no-padding native-background">
+            <div class="v4--canvas-1">
+                <div class="card-img">
+                    <div class="img">
+                        <img src="%base_path%resources/native_phrase_basic/cards/title/chapter1_title.png" />
+                    </div>
+                    <div class="text-btn-con lang-scale">
+                        <div class="card-text card-ex1 translation-btn-control">
+                            <div class="space teacher_hide"></div>
+                            <div class="trans-toggle text-off teacher_hide lang-translation display_no">
+                                <img src="%base_path%resources/native_phrase_basic_alt/icon/translate-btn-off.png" />
+                            </div>
+                            <p class="empty-paragraph">
+                                <img
+                                    class="trans_btn_img_f_r lang-translation teacher_hide lang-hide-2"
+                                    src="%base_path%resources/native_phrase_basic_alt/icon/translate-btn-off.png"
+                                />
+                            </p>
+                            <div class="clearfix clear-after teacher_hide"></div>
+                        </div>
+                        <div class="clearfix teacher_hide"></div>
+                        <div class="toggle-content-wrap func_slide_toggle_target hide translate_btn_content">
+                            <div class="card-text lang-translation scroll-to-content jp_content lang-hide-2">
+                                <div>
+                                    <p class="clickToToggleTranslate">
+                                        <?= data.title ?>
+                                    </p>
+                                    <? for(let item of data.content.section_1) {?>
+                                    <span class="lang-translation lang-locale lang-hide-2"> <?= opening ?><?= item ?><?= closing ?> </span>
+                                    <? } ?>
+                                </div>
+                                <div>
+                                    <? for(let item of data.content.section_2) {?>
+                                    <p><?= item ?></p>
+                                    <? } ?>
+
+                                    <? for(let item of data.content.section_3) {?>
+                                    <span class="lang-translation lang-locale lang-hide-2"> <?= opening ?><?= item ?><?= closing ?> </span>
+                                    <? } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- index -->
+    <div
+        class="webtext_page webtext_page_break no-padding native-background"
+        id="webtext_page_%class_id%_%chapter_id%_<?= php_open ?> echo ++$page_num<?= php_close ?>"
+    >
+        <div class="v4--canvas-1">
+            <div class="card-img">
+                <div class="img-<?= php_open ?>$locale<?= php_close ?>">
+                    <img src="%base_path%resources/native_phrase_basic/cards/index.png" />
+                </div>
+                <div class="text-btn-con lang-scale">
+                    <div class="card-text card-ex1 translation-btn-control">
+                        <div class="space teacher_hide"></div>
+                        <div class="trans-toggle text-off teacher_hide lang-translation display_no">
+                            <img src="%base_path%resources/native_phrase_basic_alt/icon/translate-btn-off.png" />
+                        </div>
+                        <p class="empty-paragraph">
+                            <img
+                                class="trans_btn_img_f_r lang-translation teacher_hide lang-hide-2"
+                                src="%base_path%resources/native_phrase_basic_alt/icon/translate-btn-off.png"
+                            />
+                        </p>
+                        <div class="clearfix clear-after teacher_hide"></div>
+                    </div>
+                    <div class="clearfix teacher_hide"></div>
+                    <div class="toggle-content-wrap func_slide_toggle_target hide translate_btn_content">
+                        <div class="card-text lang-translation scroll-to-content jp_content lang-hide-2">
+                            <div><p class="clickToToggleTranslate">Index</p></div>
+                            <? const sec_4 = data.content.section_4 ?>
+                            <? for(let n = 0; n < sec_4.length;) { ?>
+                            <div>
+                                <p><?= sec_4[n] ?></p>
+                                <span class="lang-translation lang-locale lang-hide-2"> <?= opening ?><?= sec_4[n + 1] ?><?= closing ?> </span>
+                            </div>
+                            <? n += 2 ?>
+                            <? } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

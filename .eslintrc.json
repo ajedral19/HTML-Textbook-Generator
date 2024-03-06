@@ -1,0 +1,30 @@
+{
+    "root": true,
+    "parser": "@babel/eslint-parser",
+    "plugins": ["html", "googleappsscript"],
+    "extends": ["eslint:recommended"],
+    "parserOptions": {
+        "ecmaFeatures": { "jsx": true },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "googleappsscript/googleappsscript": true
+    },
+    "ignorePatterns": ["node_modules/"],
+    "rules": {
+        "no-await-in-loop": "off",
+        "import/prefer-default-export": "off",
+        "no-unused-vars": [
+            1,
+            {
+                "ignoreRestSiblings": true,
+                "argsIgnorePattern": "res|next|^err|^ignore|^_",
+                "caughtErrors": "none"
+            }
+        ]
+    }
+}
