@@ -9,3 +9,8 @@ build
 
 push
 - `npm run upload`
+
+---
+
+Click the link for Content structure in document for templating
+[SHEET Reference](https://docs.google.com/spreadsheets/d/1x9WHtS9I0A2VLXpnoTu8WlTDlbKMkzXR7HsIW7PzQmU/edit)
