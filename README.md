@@ -1,3 +1,5 @@
+# How to run textbook html generator
+
 install packages
 - `npm install`
 
