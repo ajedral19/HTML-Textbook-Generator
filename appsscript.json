@@ -8,7 +8,12 @@
     "exceptionLogging": "STACKDRIVER",
     "runtimeVersion": "V8",
     "oauthScopes": [
+        "https://www.googleapis.com/auth/drive",
+        "https://www.googleapis.com/auth/drive.appdata",
+        "https://www.googleapis.com/auth/drive.appfolder",
+        "https://www.googleapis.com/auth/drive.install",
         "https://www.googleapis.com/auth/drive.file",
+        "https://www.googleapis.com/auth/drive.scripts",
         "https://www.googleapis.com/auth/script.external_request",
         "https://www.googleapis.com/auth/script.scriptapp",
         "https://www.googleapis.com/auth/spreadsheets",

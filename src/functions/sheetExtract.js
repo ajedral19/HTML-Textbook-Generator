@@ -34,7 +34,7 @@ const extracDataByRow = (sheet) => {
 const getSheetData = (url) => {
     const sheet = SpreadsheetApp.openByUrl(url || "https://docs.google.com/spreadsheets/d/1j-osi4jfzLqvTAmaUFR8Xsk24qBSIp2pLTrsZHpBY0s/edit");
 
-    let data = {};
+    let data = [];
     // let content = {};
     let titles = getSheetValues(sheet, "Titles");
     // const notes = getSheetValues(sheet, "Notes");
@@ -51,10 +51,11 @@ const getSheetData = (url) => {
             contents.shift();
             const content = extracDataByRow(contents);
 
-            data[`chapter_${n}`] = {
+            const result = {
                 title: arr[n - 1],
                 content,
             };
+            data[`chapter_${n}`] = result;
         }
     });
 
