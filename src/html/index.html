@@ -3,9 +3,54 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>NC Textbook Generator</title>
     </head>
+
     <body>
-        <h1>Hello test add-on</h1>
+        <h1>Texkbook HTML generator</h1>
+
+        <div class="tg-form-wrap">
+            <form class="tg-generator-form" id="tg-generator-form" method="post">
+                <div>
+                    <label for="dir_name">enter custom folder name</label>
+                    <input type="text" name="dir_name" id="dir_name" />
+                </div>
+                <div>
+                    <label for="url">enter sheet url</label>
+                    <input type="text" name="url" id="url" />
+                </div>
+                <div>
+                    <label for="template">select template name</label>
+                    <select name="template" id="template">
+                        <option value="test">Test</option>
+                    </select>
+                </div>
+                <button class="tg-btn-generate" type="submit">Generate</button>
+            </form>
+        </div>
+
+        <script>
+            const form = document.querySelector("form");
+            const btn = document.querySelector(".tg-btn-generate");
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                handleOnSubmit(e);
+                btn.textContent = "Processesing";
+                btn.setAttribute("disabled", true);
+            });
+
+            const handleOnSubmit = (e) => {
+                const { target } = e;
+                const { url, template, dir_name } = target;
+
+                google.script.run
+                    .withSuccessHandler(() => {
+                        btn.textContent = "Generate";
+                        btn.removeAttribute("disabled");
+                        alert("check your google drive to download the files");
+                    })
+                    .generateHTML(url.value, template.value, dir_name.value);
+            };
+        </script>
     </body>
 </html>

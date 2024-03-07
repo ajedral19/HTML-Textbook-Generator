@@ -1,15 +1,16 @@
-const generateHTML = (sheet_url, template) => {
+const generateHTML = (sheet_url, template, folder_name = "textbook html files") => {
     if (!template || typeof template !== "string") return;
     if (!sheet_url || typeof sheet_url !== "string") return;
+    if (!folder_name || typeof folder_name !== "string") return;
 
     const sheet_data = getSheetData(sheet_url);
 
     if (Reflect.ownKeys(sheet_data).length - 1 <= 0) return;
 
     let n = 0;
-    const folder_name = "native phrase basic";
 
     for (let key in sheet_data) {
+        // generate
         const html = HtmlService.createTemplateFromFile(template);
         n += 1;
         html.data = sheet_data[key];
@@ -20,6 +21,7 @@ const generateHTML = (sheet_url, template) => {
 
         const file = html.evaluate().getContent();
 
+        // save to directory
         const folder = DriveApp.getFoldersByName(folder_name);
         if (folder.hasNext()) {
             const curr_file = DriveApp.getFilesByName(`chapter_${n}`);
