@@ -74,6 +74,11 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
+                    from: getSrcPath("**/*/*.html"),
+                    to: "[name][ext]",
+                    noErrorOnMissing: true,
+                },
+                {
                     from: getSrcPath("**/*.html"),
                     to: "[name][ext]",
                     noErrorOnMissing: true,

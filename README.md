@@ -15,7 +15,14 @@ build
 push
 - `npm run upload`
 
----
+<br><br>
 
+# How to use
 Click the link for Content structure in document for templating
 [SHEET Reference](https://docs.google.com/spreadsheets/d/1x9WHtS9I0A2VLXpnoTu8WlTDlbKMkzXR7HsIW7PzQmU/edit)
+
+<br>
+
+# How to add a template
+Creating a new theme
+- add a new html to the themes folder
