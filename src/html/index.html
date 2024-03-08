@@ -4,22 +4,110 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>NC Textbook Generator</title>
+
+        <style>
+            :root {
+                --main-background: #000000;
+                --main-color: #ffffff;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                font-size: 62.5%;
+            }
+
+            body {
+                font-size: 1.8rem;
+                line-height: 1.2;
+                color: var(--main-color);
+                background: var(--main-background);
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                display: flex;
+                height: 100dvh;
+                width: 100dvw;
+                align-items: center;
+                justify-content: center;
+            }
+
+            input,
+            select {
+                display: inline-block;
+                padding: 8px 12px;
+                border: 1px solid var(--main-color);
+                border-radius: 0.25rem;
+                font-size: inherit;
+                font-family: inherit;
+                background: inherit;
+                color: inherit;
+                width: 100%;
+            }
+
+            label {
+                color: var(--main-background);
+            }
+
+            .tg-form-wrap {
+                padding: 3rem 4rem;
+                border-radius: 0.6rem;
+                outline: 1px dashed var(--main-color);
+                max-width: 100%;
+                margin-inline: auto;
+            }
+
+            .tg-form-field {
+                display: flex;
+                flex-flow: column;
+                gap: 4px;
+                align-items: flex-start;
+            }
+
+            button {
+                font-size: inherit;
+                font-family: inherit;
+                color: var(--main-color);
+                background: var(--main-background);
+                padding: 2rem 4rem;
+                display: block;
+                margin-inline: auto;
+                width: 100%;
+                margin-top: 2.5rem;
+                border: none;
+                border-radius: 0.4rem;
+                outline: 1px solid var(--main-color);
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: var(--main-color);
+                color: var(--main-background);
+            }
+
+            button:disabled {
+                background: var(--main-background);
+                color: var(--main-color);
+                cursor: default;
+            }
+        </style>
     </head>
 
     <body>
-        <h1>Texkbook HTML generator</h1>
-
         <div class="tg-form-wrap">
+            <h1>Texkbook HTML generator</h1>
             <form class="tg-generator-form" id="tg-generator-form" method="post">
-                <div>
+                <div class="tg-form-field">
                     <label for="dir_name">enter custom folder name</label>
                     <input type="text" name="dir_name" id="dir_name" />
                 </div>
-                <div>
+                <div class="tg-form-field">
                     <label for="url">enter sheet url</label>
                     <input type="text" name="url" id="url" />
                 </div>
-                <div>
+                <div class="tg-form-field">
                     <label for="template">select template name</label>
                     <select name="template" id="template">
                         <option value="test">Test</option>

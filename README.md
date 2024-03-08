@@ -3,6 +3,9 @@
 install packages
 - `npm install`
 
+login to google account
+- `npx clasp login`
+
 create apps script project
 - `npx clasp create --type webapp --title "TextbookGenerator" --rootDir ./dist`
 
