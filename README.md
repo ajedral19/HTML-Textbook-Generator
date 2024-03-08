@@ -8,6 +8,7 @@ login to google account
 
 create apps script project
 - `npx clasp create --type webapp --title "TextbookGenerator" --rootDir ./dist`
+- once **`.clasp.json`** is generated inside the **`./dist`** directory, move the `**.clasp.json**` to the root directory
 
 build
 - `npm run build`
