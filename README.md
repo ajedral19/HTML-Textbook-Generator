@@ -1,4 +1,4 @@
-# Contributing
+# Make it your own
 
 1. `npm install`
 2. `npx clasp login`
