@@ -1,144 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>NC Textbook Generator</title>
 
-        <style>
-            :root {
-                --main-background: #000000;
-                --main-color: #ffffff;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML - Textbook Generator</title>
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+    <style>
+        :root {
+            --main-background: #000000;
+            --main-color: #ffffff;
+        }
 
-            html {
-                font-size: 62.5%;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            body {
-                font-size: 1.8rem;
-                line-height: 1.2;
-                color: var(--main-color);
-                background: var(--main-background);
-                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-                display: flex;
-                height: 100dvh;
-                width: 100dvw;
-                align-items: center;
-                justify-content: center;
-            }
+        html {
+            font-size: 62.5%;
+        }
 
-            input,
-            select {
-                display: inline-block;
-                padding: 8px 12px;
-                border: 1px solid var(--main-color);
-                border-radius: 0.25rem;
-                font-size: inherit;
-                font-family: inherit;
-                background: inherit;
-                color: inherit;
-                width: 100%;
-            }
+        body {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            color: var(--main-color);
+            background: var(--main-background);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            height: 100dvh;
+            width: 100dvw;
+            position: relative;
+        }
 
-            label {
-                color: var(--main-background);
-            }
+        main {
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100%;
+        }
 
-            .tg-form-wrap {
-                padding: 3rem 4rem;
-                border-radius: 0.6rem;
-                outline: 1px dashed var(--main-color);
-                max-width: 100%;
-                margin-inline: auto;
-            }
+        nav {
+            flex: 0;
+            height: fit-content;
+            display: block;
+            width: 100%;
+            padding-block: 2em;
+            padding-inline: 1em;
+            border-block-end: 1px solid #1b1b1b;
+        }
 
-            .tg-form-field {
-                display: flex;
-                flex-flow: column;
-                gap: 4px;
-                align-items: flex-start;
-            }
+        .dashboard {
+            flex: 1;
+            display: flex;
+            flex-flow: row nowrap;
+        }
 
-            button {
-                font-size: inherit;
-                font-family: inherit;
-                color: var(--main-color);
-                background: var(--main-background);
-                padding: 2rem 4rem;
-                display: block;
-                margin-inline: auto;
-                width: 100%;
-                margin-top: 2.5rem;
-                border: none;
-                border-radius: 0.4rem;
-                outline: 1px solid var(--main-color);
-                cursor: pointer;
-            }
+        .dashboard .sidebar {
+            flex-basis: 20%;
+            background: #252525;
+        }
 
-            button:hover {
-                background: var(--main-color);
-                color: var(--main-background);
-            }
+        .dashboard .main-panel {
+            flex: 1;
+            padding: 2em;
+        }
 
-            button:disabled {
-                background: var(--main-background);
-                color: var(--main-color);
-                cursor: default;
-            }
-        </style>
-    </head>
+        .dashboard .main-panel .panel-inner__title {
+            color: red;
+        }
+    </style>
+</head>
 
-    <body>
-        <div class="tg-form-wrap">
-            <h1>Texkbook HTML generator</h1>
-            <form class="tg-generator-form" id="tg-generator-form" method="post">
-                <div class="tg-form-field">
-                    <label for="dir_name">enter custom folder name</label>
-                    <input type="text" name="dir_name" id="dir_name" />
+<body>
+    <main>
+        <nav>
+            <h1>HTML - Texkbook generator</h1>
+        </nav>
+        <section class="dashboard">
+            <div class="sidebar"></div>
+
+            <div class="main-panel">
+                <div class="panel-inner">
+                    <h2 class="panel-inner__title">Panel name</h2>
+                    <div class="html-generator-wrap" id="html_generator">
+                        <p class="prompt prompt--error">Lorem, ipsum dolor.</p>
+                        <p class="prompt prompt--warning">Lorem, ipsum dolor.</p>
+                        <p class="prompt prompt--success">Lorem, ipsum dolor.</p>
+                        <form class="form" id="form_generator">
+                            <div class="form-field">
+                                <label for="field_folder" data-tip=""> folder name </label>
+                                <input type="text" name="folder" id="field_folder" />
+                            </div>
+                            <div class="form-field">
+                                <label for="field_url" data-tip=""> Document URL (<a href="" target="_blank" class="link">Sheet</a>) </label>
+                                <input type="text" name="url" id="field_url" />
+                            </div>
+                            <div class="form-field">
+                                <label for="field_theme" data-tip=""> Theme </label>
+                                <select name="theme" id="field_theme"></select>
+                            </div>
+                            <button class="btn" id="btn_generate">Generate</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="tg-form-field">
-                    <label for="url">enter sheet url</label>
-                    <input type="text" name="url" id="url" />
-                </div>
-                <div class="tg-form-field">
-                    <label for="template">select template name</label>
-                    <select name="template" id="template">
-                        <option value="test">Test</option>
-                    </select>
-                </div>
-                <button class="tg-btn-generate" type="submit">Generate</button>
-            </form>
-        </div>
+            </div>
+        </section>
+    </main>
 
-        <script>
-            const form = document.querySelector("form");
-            const btn = document.querySelector(".tg-btn-generate");
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-                handleOnSubmit(e);
-                btn.textContent = "Processesing";
-                btn.setAttribute("disabled", true);
-            });
+    <script>
+        // const form = document.querySelector("form");
+        // const btn = document.querySelector(".tg-btn-generate");
+        // form.addEventListener("submit", (e) => {
+        //     e.preventDefault();
+        //     handleOnSubmit(e);
+        //     btn.textContent = "Processesing";
+        //     btn.setAttribute("disabled", true);
+        // });
 
-            const handleOnSubmit = (e) => {
-                const { target } = e;
-                const { url, template, dir_name } = target;
+        // const handleOnSubmit = (e) => {
+        //     const { target } = e;
+        //     const { url, template, dir_name } = target;
 
-                google.script.run
-                    .withSuccessHandler(() => {
-                        btn.textContent = "Generate";
-                        btn.removeAttribute("disabled");
-                        alert("check your google drive to download the files");
-                    })
-                    .generateHTML(url.value, template.value, dir_name.value);
-            };
-        </script>
-    </body>
+        //     google.script.run
+        //         .withSuccessHandler(() => {
+        //             btn.textContent = "Generate";
+        //             btn.removeAttribute("disabled");
+        //             alert("check your google drive to download the files");
+        //         })
+        //         .generateHTML(url.value, template.value, dir_name.value);
+        // };
+    </script>
+</body>
+
 </html>
