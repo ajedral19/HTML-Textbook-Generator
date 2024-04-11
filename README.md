@@ -44,7 +44,7 @@ Click the link for Content structure in document for templating
 ---
 
 1. Enter a name how you want to identify your folder, so you can easily find it in you google drive
-2. Here's a test document you can use -> https://docs.google.com/spreadsheets/d/1j-osi4jfzLqvTAmaUFR8Xsk24qBSIp2pLTrsZHpBY0s/edit
+2. Here's a test document you can use -> https://docs.google.com/spreadsheets/d/1x9WHtS9I0A2VLXpnoTu8WlTDlbKMkzXR7HsIW7PzQmU/edit
 
     * Each document is equal to an object,
     * Each sheet named "Chapter_<number>" in the document is equal to an object property,
