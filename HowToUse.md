@@ -1,50 +1,5 @@
-# Make it your own
-
-1. `npm install`
-2. `npx clasp login`
-3. `npx clasp create --type webapp --title "TextbookGenerator" --rootDir ./dist`
-4. once **`.clasp.json`** is generated inside the **`./dist`** directory, move the `**.clasp.json**` to the root directory
-5. `npm run build`
-6. `npm run upload`
-
-### How to add a template
-Creating a new theme
-- add a new html to the themes folder
-
-#### The outputted data extracted from the sheet is structured like this (associative array)
-```javascript
-[
-	chapter_1: {
-		title: "some title",
-		content: {
-			section_1: [
-				"some content",
-                		"another content"
-            		],
-            		...
-		}
-	},
-	...
-]
-```
-
-**The number of chapters reflects the number of chapters in sheet**
-- Main title for each chapter sits in Titles sheet
-- Sheet chapter should be named as **Chapter_\<number\>**
-- Each row in the sheet chapter is considered as section
-- Each column in row section is part of the section's content
-- ***<mark>For new creation of theme, please refer to how the data is being outputted.</mark>***
-
-<br>
-
-# How to use
-Click the link for Content structure in document for templating
-[SHEET Reference](https://docs.google.com/spreadsheets/d/1x9WHtS9I0A2VLXpnoTu8WlTDlbKMkzXR7HsIW7PzQmU/edit)
-
----
-
 1. Enter a name how you want to identify your folder, so you can easily find it in you google drive
-2. Here's a test document you can use -> https://docs.google.com/spreadsheets/d/1x9WHtS9I0A2VLXpnoTu8WlTDlbKMkzXR7HsIW7PzQmU/edit
+2. Here's a test document you can use -> https://docs.google.com/spreadsheets/d/1j-osi4jfzLqvTAmaUFR8Xsk24qBSIp2pLTrsZHpBY0s/edit
 
     * Each document is equal to an object,
     * Each sheet named "Chapter_<number>" in the document is equal to an object property,
@@ -90,4 +45,3 @@ Click the link for Content structure in document for templating
 
   For templating of textbook, you can ask me to convert a textbook into template and I will structure a document dedicated to a specific theme.
   Though you can uses any document similar the provided one, but you cannot guarantee the expected output you want for a specific textbook, that is why for each textbook theme a specific document structure will be created by the theme author.
-
