@@ -1,11 +1,11 @@
 const generateHTML = (sheet_url, template, folder_name = "textbook html files") => {
-    if (!template || typeof template !== "string") return;
-    if (!sheet_url || typeof sheet_url !== "string") return;
-    if (!folder_name || typeof folder_name !== "string") return;
+    if (!folder_name.length || typeof folder_name !== "string") throw new Error("Folder name must be set.");
+    if (!sheet_url || typeof sheet_url !== "string") throw new Error("URL is unknown or incorrect.");
+    if (!template || typeof template !== "string") throw new Error("Template is undefined or unknown.");
 
     const sheet_data = getSheetData(sheet_url);
 
-    if (Reflect.ownKeys(sheet_data).length - 1 <= 0) return;
+    if (Reflect.ownKeys(sheet_data).length - 1 <= 0) throw new Error("Coundn't find any document.");
 
     let n = 0;
 
@@ -37,5 +37,5 @@ const generateHTML = (sheet_url, template, folder_name = "textbook html files") 
         }
     }
 
-    return;
+    return 1;
 };

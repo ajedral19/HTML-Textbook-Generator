@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../css/main.css"> -->
     <title>HTML - Textbook Generator</title>
 
     <style>
         :root {
-            --main-background: #000000;
-            --main-color: #ffffff;
+            --main-background: #ffffff;
+            --main-color: #000000;
+            --base-font: 1.8rem;
+            --space-y: 0.8em;
+            --space-x: 1.6em;
         }
 
         * {
@@ -23,11 +27,11 @@
         }
 
         body {
-            font-size: 1.8rem;
-            line-height: 1.2;
-            color: var(--main-color);
             background: var(--main-background);
+            color: var(--main-color);
+            font-size: var(--base-font);
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.2;
             height: 100dvh;
             width: 100dvw;
             position: relative;
@@ -49,6 +53,118 @@
             border-block-end: 1px solid #1b1b1b;
         }
 
+        input,
+        select,
+        button {
+            --__pad-x: var(--space-y);
+            --__pad-y: var(--space-y);
+            font: inherit;
+            color: inherit;
+            background: inherit;
+            border: 1px solid;
+            padding: var(--__pad-y) var(--__pad-x);
+        }
+
+        button {
+            --__btn-bg: #bebebe;
+            --__btn-outline: #aaa9a9;
+            --__btn-bg-hover: #f0f0f0;
+            --__text-color: #2e2e2e;
+            padding: 1.6rem 2rem;
+            background: var(--__btn-bg);
+            color: var(--__text-color);
+            cursor: pointer;
+            border: none;
+            outline: 2px solid var(--__btn-outline);
+        }
+
+        button:disabled {
+            pointer-events: none;
+            cursor: none;
+            --__btn-bg: #757575;
+        }
+
+        button:hover {
+            background: var(--__btn-bg-hover);
+        }
+
+        .rounded-1 {
+            border-radius: 0.5rem;
+        }
+
+        .rounded-2 {
+            border-radius: 1rem;
+        }
+
+        .rounded-3 {
+            border-radius: 1.5rem;
+        }
+
+        .rounded-4 {
+            border-radius: 2rem;
+        }
+
+        .rounded-5 {
+            border-radius: 2.5rem;
+        }
+
+        .rounded-6 {
+            border-radius: 3rem;
+        }
+
+        .form-field__label {
+            display: block;
+            margin-block-end: 1rem;
+            text-transform: capitalize;
+        }
+
+        .form-field__field {
+            display: block;
+            width: 100%;
+        }
+
+        .form {
+            display: flex;
+            flex-flow: column;
+            gap: 40px;
+        }
+
+        .form--max-400 {
+            max-width: 400px;
+        }
+
+        .prompt {
+            --__promp-bg: #eeff31;
+            --__text-color: #ffffff;
+            display: block;
+            padding: 1em 2em;
+            background: var(--__promp-bg);
+            color: var(--__text-color);
+            text-align: left;
+            width: fit-content;
+            max-width: 600px;
+            min-width: 400px;
+            widows: 2;
+            page-break-before: always;
+        }
+
+        .prompt--error {
+            --__promp-bg: #ff593c;
+        }
+
+        .prompt--warning {
+            --__promp-bg: #fda531;
+        }
+
+        .prompt--success {
+            --__promp-bg: #91da56;
+            --__text-color: #ffffff;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
         .dashboard {
             flex: 1;
             display: flex;
@@ -66,7 +182,7 @@
         }
 
         .dashboard .main-panel .panel-inner__title {
-            color: red;
+            color: var(--main-color);
         }
     </style>
 </head>
@@ -83,23 +199,25 @@
                 <div class="panel-inner">
                     <h2 class="panel-inner__title">Panel name</h2>
                     <div class="html-generator-wrap" id="html_generator">
-                        <p class="prompt prompt--error">Lorem, ipsum dolor.</p>
-                        <p class="prompt prompt--warning">Lorem, ipsum dolor.</p>
-                        <p class="prompt prompt--success">Lorem, ipsum dolor.</p>
+                        <!-- <p class="prompt rounded-2 prompt--error">Lorem, ipsum dolor.</p> -->
                         <form class="form" id="form_generator">
                             <div class="form-field">
-                                <label for="field_folder" data-tip=""> folder name </label>
-                                <input type="text" name="folder" id="field_folder" />
+                                <label class="form-field__label" for="field_folder" data-tip=""> folder name </label>
+                                <input class="input-field form-field__field rounded-1" type="text" name="folder" id="field_folder" />
                             </div>
                             <div class="form-field">
-                                <label for="field_url" data-tip=""> Document URL (<a href="" target="_blank" class="link">Sheet</a>) </label>
-                                <input type="text" name="url" id="field_url" />
+                                <label class="form-field__label" for="field_url" data-tip="">
+                                    Document URL (<a href="https://docs.google.com/spreadsheets/d/1x9WHtS9I0A2VLXpnoTu8WlTDlbKMkzXR7HsIW7PzQmU/edit" target="_blank" class="link">Template Document</a>)
+                                </label>
+                                <input class="input-field form-field__field rounded-1" type="text" name="url" id="field_url" />
                             </div>
                             <div class="form-field">
-                                <label for="field_theme" data-tip=""> Theme </label>
-                                <select name="theme" id="field_theme"></select>
+                                <label class="form-field__label" for="field_theme" data-tip=""> Theme </label>
+                                <select class="input-field form-field__field rounded-1" name="theme" id="field_theme">
+                                    <option>Choose template</option>
+                                </select>
                             </div>
-                            <button class="btn" id="btn_generate">Generate</button>
+                            <button type="submit" class="btn rounded-1" name="btn-submit" id="btn_generate">Generate</button>
                         </form>
                     </div>
                 </div>
@@ -108,27 +226,100 @@
     </main>
 
     <script>
-        // const form = document.querySelector("form");
-        // const btn = document.querySelector(".tg-btn-generate");
-        // form.addEventListener("submit", (e) => {
-        //     e.preventDefault();
-        //     handleOnSubmit(e);
-        //     btn.textContent = "Processesing";
-        //     btn.setAttribute("disabled", true);
-        // });
+        // prop name = template name
+        // prop value = option label
+        let msg = "";
+        const container = document.querySelector(".html-generator-wrap");
+        const templates = {
+            test: "Test",
+            warmup: "Warm Up",
+        };
 
-        // const handleOnSubmit = (e) => {
-        //     const { target } = e;
-        //     const { url, template, dir_name } = target;
+        const states = ["error", "warning", "success"];
 
-        //     google.script.run
-        //         .withSuccessHandler(() => {
-        //             btn.textContent = "Generate";
-        //             btn.removeAttribute("disabled");
-        //             alert("check your google drive to download the files");
-        //         })
-        //         .generateHTML(url.value, template.value, dir_name.value);
-        // };
+        const form = document.querySelector("form");
+        const options = form.theme;
+
+        // <p class="prompt rounded-2 prompt--error">Lorem, ipsum dolor.</p>
+        const generatePrompt = (mgs, state, container) => {
+            let timeout = null;
+            if (!container) return;
+
+            clearTimeout(timeout);
+
+            const existing_prompt = container.querySelector(".prompt");
+            if (existing_prompt) {
+                container.removeChild(existing_prompt);
+            }
+
+            const prompt = document.createElement("p");
+            prompt.classList.add("prompt");
+            prompt.classList.add("rounded-2");
+            if (states.indexOf(state) >= 0) prompt.classList.add(`prompt--${state}`);
+            prompt.textContent = mgs;
+            // container.appendChild(prompt);
+            container.insertBefore(prompt, container.querySelector('.form'))
+
+            timeout = setTimeout(() => {
+                container.removeChild(prompt);
+                clearTimeout(timeout);
+            }, 3000);
+        };
+
+        const generateOptions = (field, options) => {
+            const props = Object.getOwnPropertyNames(options);
+            props.forEach((prop, n) => {
+                const option = document.createElement("option");
+                option.setAttribute("value", prop);
+                option.textContent = options[prop];
+                field.appendChild(option);
+            });
+        };
+
+        const handleResponse = (element, msg, status, container) => (callback) => {
+            element.textContent = "Generate";
+            element.removeAttribute("disabled");
+            callback(msg, status, container);
+        };
+
+        const handleOnSubmit = (e, btn) => {
+            const {
+                target
+            } = e;
+            const {
+                url,
+                theme: template,
+                folder: dir_name
+            } = target;
+
+            try {
+                google.script.run
+                    .withSuccessHandler(() => {
+                        msg = "Textbook successfully generated. Check your google drive and download the files";
+                        handleResponse(btn, msg, states[2], container)(generatePrompt);
+                    })
+                    .withFailureHandler((err) => {
+                        msg = `${err.message}`;
+                        handleResponse(btn, msg, states[0], container)(generatePrompt);
+                    })
+                    .generateHTML(String(url.value), String(template.value), String(dir_name.value));
+            } catch (err) {
+                msg = `${err.message}`;
+                handleResponse(btn, msg, states[0], container)(generatePrompt);
+            }
+        };
+
+        window.addEventListener("DOMContentLoaded", () => generateOptions(options, templates));
+
+        // form submit
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const btn = e.target["btn-submit"];
+            btn.textContent = "Processesing";
+            btn.setAttribute("disabled", true);
+            handleOnSubmit(e, btn);
+        });
     </script>
 </body>
 

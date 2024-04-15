@@ -4,6 +4,9 @@ const GasPLugin = require("gas-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const webpack = require("webpack");
 const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 
 const getSrcPath = (filePath) => {
     const src = path.resolve(__dirname, "src");
@@ -66,6 +69,10 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
+            },
         ],
     },
     plugins: [
@@ -94,6 +101,19 @@ module.exports = {
                     info: { minimize: true },
                 },
             ],
+        }),
+        new MiniCssExtractPlugin({
+            filename: "**/[name].css",
+            chunkFilename: "[id].css",
+        }),
+        // new HtmlWebpackPlugin(),
+        new HTMLInlineCSSWebpackPlugin({
+            filter(fileName) {
+                return fileName.includes("index");
+            },
+            styleTagFactory({ style }) {
+                return `<style type="text/css">${style}</style>`;
+            },
         }),
         new GasPLugin({
             comments: false,

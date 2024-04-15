@@ -1,0 +1,34 @@
+<?php
+    $isSwipe = false;
+    $page_number = 0;
+    $po_name = 'warmup';
+?>
+
+<article
+    class="webtext tb--v4 lang-<?php echo $locale; ?> webtext_warmup" 
+	id="webtext_%class_id%_%chapter_id%" 
+	data-class_id="%class_id%" 
+	data-chapter_id="%chapter_id%" 
+	data-orderno="%orderno%"
+>
+
+<div class="v4--page <?php echo $isSwipe ? 'webtext_page_break' : ''; ?>">
+    <div class="v4--teacher-note">
+        <? for(let item of sec_1) {?>
+            <p>
+                <b>
+                    <em>
+                        <?= item ?>
+                    </em>
+                </b>
+            </p>
+        <? } ?>
+        <p>
+            <? sec_2?.forEach((item, n) => {}) {?>
+                <em><b><?= item ?></b><?= sec_2[n+1] ?></em>
+            <? } ?>
+        </p>
+    </div>
+</div>
+
+</article>

@@ -1,0 +1,61 @@
+:root {
+    --main-background: #000000;
+    --main-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    color: var(--main-color);
+    background: var(--main-background);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 100dvh;
+    width: 100dvw;
+    position: relative;
+}
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+}
+
+nav {
+    flex: 0;
+    height: fit-content;
+    display: block;
+    width: 100%;
+    padding-block: 2em;
+    padding-inline: 1em;
+    border-block-end: 1px solid #1b1b1b;
+}
+
+.dashboard {
+    flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.dashboard .sidebar {
+    flex-basis: 20%;
+    background: #252525;
+}
+
+.dashboard .main-panel {
+    flex: 1;
+    padding: 2em;
+}
+
+.dashboard .main-panel .panel-inner__title {
+    color: red;
+}

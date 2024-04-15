@@ -1,0 +1,150 @@
+@use 'sass:math'
+
+:root
+    --main-background: #ffffff
+    --main-color: #000000
+    --base-font: 1.8rem
+    --space-y: .8em
+    --space-x: 1.6em
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+html
+    font-size: 62.5%
+
+body
+    background: var(--main-background)
+    color: var(--main-color)
+    font-size: var(--base-font)
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    line-height: 1.2
+    height: 100dvh
+    width: 100dvw
+    position: relative
+
+// mixins
+@mixin rounded($n)
+    @if $n
+        @for $val from 1 through $n
+            .rounded-#{$val}
+                border-radius: #{math.div($val, 2)}rem
+
+@mixin whitespace($n)
+    .m-auto
+        margin: auto
+    @if $n
+        @for $val from 1 through $n
+            // $
+            .m-y-#{$val}
+                margin-block: #{math.div($val, 2)}em
+            .m-x-#{$val}
+                margin-inline: #{math.div($val, 2)}em
+            .p-y-#{$val}
+                padding-block: #{math.div($val, 2)}em
+            .p-x-#{$val}
+                padding-inline: #{math.div($val, 2)}em
+
+main
+    display: flex
+    flex-flow: column nowrap
+    height: 100%
+
+nav
+    flex: 0
+    height: fit-content
+    display: block
+    width: 100%
+    padding-block: 2em
+    padding-inline: 1em
+    border-block-end: 1px solid #1b1b1b
+
+input, select, button
+    --__pad-x: var(--space-y)
+    --__pad-y: var(--space-y)
+    font: inherit
+    color: inherit
+    background: inherit
+    border: 1px solid
+    padding: var(--__pad-y) var(--__pad-x)
+
+button
+    --__btn-bg: #bebebe
+    --__btn-outline: #aaa9a9
+    --__btn-bg-hover: #f0f0f0
+    --__text-color: #2e2e2e
+    padding: 1.6rem 2rem
+    background: var(--__btn-bg)
+    color: var(--__text-color)
+    cursor: pointer
+    border: none
+    outline: 2px solid var(--__btn-outline)
+
+    &:disabled
+        pointer-events: none
+        cursor: none
+        --__btn-bg: #757575
+
+    &:hover
+        background: var(--__btn-bg-hover)
+
+@include rounded(6)
+
+.form-field
+    &__label
+        display: block
+        margin-block-end: 1rem
+        text-transform: capitalize
+    &__field
+        display: block
+        width: 100%
+
+.form
+    display: flex
+    flex-flow: column
+    gap: 40px
+    &--max-400
+        max-width: 400px
+
+.prompt
+    --__promp-bg: #eeff31
+    --__text-color: #ffffff
+    display: block
+    padding: 1em 2em
+    background: var(--__promp-bg)
+    color: var(--__text-color)
+    text-align: left
+    width: fit-content
+    max-width: 600px
+    min-width: 400px
+    widows: 2
+    page-break-before: always
+    &--error
+        --__promp-bg: #ff593c
+    &--warning
+        --__promp-bg: #fda531
+    &--success
+        --__promp-bg: #91da56
+        --__text-color: #353535
+
+.w-full
+    width: 100%
+
+.dashboard
+    flex: 1
+    display: flex
+    flex-flow: row nowrap
+
+    .sidebar
+        flex-basis: 20%
+        background: #252525
+
+    .main-panel
+        flex: 1
+        padding: 2em
+
+        .panel-inner
+            &__title
+                color: var(--main-color)
+                // filter: invert(1) brightness(0)
